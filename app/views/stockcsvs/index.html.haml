@@ -1,0 +1,23 @@
+= flash[:notice]
+%table
+  %thead
+    %tr
+      %th Id
+      %th.col-md-4 symbol
+      %th.col-md-4 name
+      %th.col-md-4 price
+  %tbody
+    - @stockcsvs.each do |stockcsv|
+      %tr
+        %td= stockcsv.id
+        %td.col-md-4= stockcsv.symbol
+        %td.col-md-4= stockcsv.name
+        %td.col-md-4= stockcsv.price
+        
+%div
+  %h3 Import a CSV File
+  = form_tag import_stockcsvs_path, multipart: true do
+    = file_field_tag :file
+    %br
+    = button_tag(type: :submit, class: 'btn btn-lg btn-success') do
+      Import csv file
