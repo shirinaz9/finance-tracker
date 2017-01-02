@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   get 'stockcsvs/import'
 
-  devise_for :users
+  devise_for :users, :controllers => { :registrations => "user/registrations" }
   resources :user_stocks, except: [ :show, :edit, :update]
   get 'welcome/index'
   root 'welcome#index'
